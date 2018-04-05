@@ -1,0 +1,107 @@
+//Practice Joins
+
+1. 
+SELECT * FROM InvoiceLine WHERE UnitPrice > 0.99
+2. 
+SELECT i.InvoiceDate, c.FirstName, c.LastName, i.Total 
+FROM Invoice i
+JOIN Customer c ON i.CustomerId = c.CustomerId
+3.
+SELECT c.FirstName, c.LastName, e.FirstName, e.LastName
+FROM Customer c
+JOIN Employee e ON c.SupportRepId = e.EmployeeId
+4.
+SELECT alb.Title, art.Name
+FROM Album alb
+JOIN Artist art ON alb.ArtistId = art.ArtistId
+5.
+SELECT pt.TrackId
+FROM PlaylistTrack pt
+JOIN Playlist p ON p.PlaylistId
+WHERE p.Name = 'Music';
+6.
+SELECT t.Name 
+from Track t
+JOIN PlaylistTrack pt ON pt.TrackId = t.TrackId
+WHERE pt.PlaylistId = 5
+7.
+SELECT t.Name 
+from Track t
+JOIN PlaylistTrack pt ON pt.TrackId = t.TrackId
+WHERE pt.PlaylistId = 5
+.8
+SELECT t.Name, a.Title
+FROM Track t
+JOIN Album a ON t.AlbumId = a.AlbumId
+JOIN Genre g on g.GenreId = t.GenreId
+WHERE g.Name = "Alternative";
+
+Black Diamond
+
+
+//Practice Nested Queries
+
+1.
+2.
+3.
+4.
+5.
+6.
+
+//Practice Updating Rows
+
+1.
+2.
+3.
+
+// Use Distinct
+
+1.
+2.
+3.
+
+Delete Rows
+
+1.
+2.
+3.
+4.
+
+eCommerce Simulation
+
+1. 
+CREATE TABLE users (
+  user_id integer primary key autoincrement,
+  name text NOT NULL,
+  email text NOT NULL
+  );
+  
+CREATE TABLE products (
+   prod_id integer primary key autoincrement,
+   name text NOT NULL,
+   price money NOT NULL
+   )
+
+insert into prods (name, price) VALUES ('coffee', 2.43),('tea',3.20),('wine',7.40);
+-- insert into users (name, email) VALUES ('Destiny','destiny@fakemail.com'),('Shanelle','shanelle@fakemail.com'),('Michael','michael@fakemail.com')
+
+// USED POSTGRESQL DATABASE 
+
+CREATE TABLE orders (
+order_id serial PRIMARY KEY, 
+user_id integer references users (user_id), 
+prod_id integer REFERENCES prods (prod_id)
+);
+
+INSERT INTO orders (user_id, prod_id) VALUES (1, 3),(2, 3),(3, 2)
+
+SELECT p.name
+from prods p
+join orders o ON o.prod_id = p.prod_id
+where o.order_id = 1
+
+Select count(order_id) FROM orders
+
+
+
+2.
